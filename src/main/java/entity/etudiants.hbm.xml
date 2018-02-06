@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="entity">
+  <class name="entity.Etudiants" table="etudiants">
+  	<id name="id_etudiant" column="id_etudiant">
+  	</id>
+  	<property name="nom" type="java.lang.String"> <column name="nom"/> </property>
+  	<property name="genre" type="java.lang.String"> <column name="genre"/> </property>
+  	<property name="date_naissance" type="java.lang.String"> <column name="date_naissance"/> </property>
+  	<property name="adresse" type="java.lang.String"> <column name="adresse"/> </property>
+  </class>
+</hibernate-mapping>
