@@ -48,7 +48,7 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		
-		/*Test*/
+		/*Test
 		Users u = new Users();
 		u.setEmail("armandnjapou@gmail.com");
 		u.setLogin("anjapou");
@@ -57,7 +57,7 @@ public class HomeController {
 		System.out.println("Record done succesfully !!!");
 		u.setEmail("njapsolo@yahoo.fr");
 		userService.updateUser(u);
-		System.out.println("Update succeed !!!");
+		System.out.println("Update succeed !!!");*/
 		
 		model.addAttribute("serverTime", formattedDate );
 		
