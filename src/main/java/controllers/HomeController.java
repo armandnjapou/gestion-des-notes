@@ -1,4 +1,4 @@
-package com.springmvc.gnote;
+package controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
