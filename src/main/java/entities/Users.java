@@ -22,8 +22,9 @@ public class Users {
 	@Column(name="password")
 	private String password;
 	
-	@Column(name="email")
-	private String email;
+	public Users() {
+		
+	}
 	
 	public int getUID() {
 		return UID;
@@ -43,10 +44,8 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
+	
+	public String toString() {
+		return "Users >> login : "+this.login+" ; mdp : "+this.password;
 	}
 }

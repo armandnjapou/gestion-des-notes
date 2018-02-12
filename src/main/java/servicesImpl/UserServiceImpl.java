@@ -58,4 +58,12 @@ public class UserServiceImpl implements UserService {
 		this.userDao.removeUser(UID);
 	}
 
+	@Override
+	@Transactional
+	public Users checkUser(Users user) {
+		// TODO Auto-generated method stub
+		
+		return this.userDao.checkUser(user);
+	}
+
 }

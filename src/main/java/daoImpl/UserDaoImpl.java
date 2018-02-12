@@ -50,7 +50,7 @@ public class UserDaoImpl implements UserDao {
 	public List<Users> getAllUsers() {
 		// TODO Auto-generated method stub
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Users> allUsers = session.createQuery("from users").list();
+		List<Users> allUsers = session.createQuery("from Users").list();
 		
 		for(Users u : allUsers) {
 			logger.info("Users list :: "+u);
@@ -77,6 +77,16 @@ public class UserDaoImpl implements UserDao {
 		if(us != null)
 			session.delete(us);
 		logger.info("User deleted successfully, User details : "+us);
+	}
+
+	@Override
+	public Users checkUser(Users user) {
+		// TODO Auto-generated method stub
+		Session session = this.sessionFactory.getCurrentSession();
+		Users us = (Users) session
+				.createQuery("from Users where login='"+user.getLogin()+"' and password='"+user.getPassword()+"'")
+				.uniqueResult();
+		return us;
 	}
 
 }
