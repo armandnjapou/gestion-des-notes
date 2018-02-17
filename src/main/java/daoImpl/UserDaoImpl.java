@@ -1,16 +1,12 @@
 package daoImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
 import dao.UserDao;
 import entities.Users;
 
@@ -59,6 +55,7 @@ public class UserDaoImpl implements UserDao {
 		return allUsers;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public Users getUserById(int UID) {
 		// TODO Auto-generated method stub
@@ -69,6 +66,7 @@ public class UserDaoImpl implements UserDao {
 		return us;
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void removeUser(int UID) {
 		// TODO Auto-generated method stub
