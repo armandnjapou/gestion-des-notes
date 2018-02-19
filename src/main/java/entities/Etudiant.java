@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,6 +36,14 @@ public class Etudiant {
 	@Column(name="adresse")
 	private String adresse;
 	
+	@ManyToMany(cascade = { 
+	        CascadeType.PERSIST, 
+	        CascadeType.MERGE
+	    }, fetch = FetchType.EAGER)
+    @JoinTable(name = "suivre",
+        joinColumns = @JoinColumn(name = "id_etudiant"),
+        inverseJoinColumns = @JoinColumn(name = "id_cours")
+    )
 	private List<Cours> cours = new ArrayList<Cours>();
 	
 	public Etudiant() {}
@@ -45,16 +55,6 @@ public class Etudiant {
 		this.date_naissance = date_naissance;
 		this.adresse = adresse;
 	}
-	
-	@ManyToMany(cascade = { 
-	        CascadeType.PERSIST, 
-	        CascadeType.MERGE
-	    })
-    @JoinTable(name = "suivre",
-        joinColumns = @JoinColumn(name = "id_etudiant"),
-        inverseJoinColumns = @JoinColumn(name = "id_cours")
-    )
-	
 	
 	public int getId_etudiant() {
 		return id_etudiant;
@@ -94,5 +94,12 @@ public class Etudiant {
     public void removeCours(Cours c) {
     	cours.remove(c);
     	c.getEtudiants().remove(this);
+    }
+    
+    public String toString() {
+    	String ch = "Liste : ";
+    	for(Cours c : this.cours)
+    		ch += c.getIntitule()+"|";
+    	return ch;
     }
 }
