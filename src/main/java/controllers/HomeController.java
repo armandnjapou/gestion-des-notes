@@ -3,6 +3,7 @@ package controllers;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import entities.Etudiant;
 import entities.Users;
+import services.EtudiantService;
 import services.UserService;
 
 /**
@@ -35,6 +38,14 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
+	private EtudiantService etudiantService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="etudiantService")
+	public void setEtudiantService(EtudiantService etudiantService) {
+		this.etudiantService = etudiantService;
+	}
+
 	private UserService userService;
 	
 	@Autowired(required=true)
@@ -46,6 +57,14 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("user", new Users());
+		/*Etudiant et = new Etudiant();
+		et.setNom("Moussa");
+		et.setGenre("Masculin");
+		et.setDate_naissance("21/05/1993");
+		et.setAdresse("8 rue du Salop");*/
+		List<Etudiant> L =  etudiantService.getAllEtudiants();
+		for(Etudiant e : L)
+			System.out.println(e.getNom()+" "+e.getAdresse()+" "+e.toString());
 		return "home";
 	}
 	

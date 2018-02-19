@@ -24,6 +24,8 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>entities.Users</value>
+				<value>entities.Etudiant</value>
+				<value>entities.Cours</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -35,12 +37,51 @@
 		</property> 
 	</bean>
 		
+	<!-- =========================== ALL BEANS =============================== -->
+		
+	<!-- ====== USER ========== -->
+	<!-- bean referenced Users -->
+	
 	<bean id="userDao" class="daoImpl.UserDaoImpl">
 		<property name="sessionFactory" ref="mySessionFactory"></property>
 	</bean>
 	<bean id="userService" class="servicesImpl.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
+	
+	<!-- ====== STUDENT ========== -->
+	<!-- bean referenced Etudiant -->
+	
+	<bean id="etudiantDao" class="daoImpl.EtudiantDaoImpl">
+		<property name="sessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	<bean id="etudiantService" class="servicesImpl.EtudiantServiceImpl">
+		<property name="etudiantDao" ref="etudiantDao"></property>
+	</bean>
+	
+	<!-- ====== COURSE ========== -->
+	<!-- bean referenced Cours -->
+	
+	<bean id="coursDao" class="daoImpl.CoursDaoImpl">
+		<property name="sessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	<bean id="coursService" class="servicesImpl.CoursServiceImpl">
+		<property name="coursDao" ref="coursDao"></property>
+	</bean>
+	
+	
+	<!-- ====== NOTES ========== -->
+	<!-- bean referenced notes -->
+	
+	<bean id="notesDao" class="daoImpl.NotesDaoImpl">
+		<property name="sessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	<bean id="notesService" class="servicesImpl.NotesServiceImpl">
+		<property name="notesDao" ref="notesDao"></property>
+	</bean>
+	
+	
+	<!-- ======================== END OF BEANS ========================= -->
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
