@@ -38,43 +38,5 @@
       </div>
       <a href="disconnect"><span class="oi oi-power-standby text-white mr-sm-2" title="Déconnexion" aria-hidden="true"></span></a>
     </nav>
-    
-    <header class="bg-warning text-white">
-      <div class="container text-center">
-        <h1>Bienvenue sur la plateforme de gestion des notes</h1>
-        <p class="lead">Cette plateforme assure le suivi de vos évaluations et de vos cours</p>
-      </div>
-    </header>
-    
-	<div class="row mt-4 mr-2 ml-2">
-	  <div class="col-sm-4">
-	    <div class="card">
-	      <div class="card-body">
-	        <h5 class="card-title">Etudiants</h5>
-	        <p class="card-text">Ajouter, rechercher, modifier, supprimer, consulter les informations sur les étudiants.</p>
-	        <a href="etudiants" class="btn btn-warning">Commencer</a>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-sm-4">
-	    <div class="card">
-	      <div class="card-body">
-	        <h5 class="card-title">Cours</h5>
-	        <p class="card-text">Ajouter, rechercher, modifier, supprimer, consulter les informations sur les cours.</p>
-	        <a href="cours" class="btn btn-warning">Commencer</a>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="col-sm-4">
-	    <div class="card">
-	      <div class="card-body">
-	        <h5 class="card-title">Notes</h5>
-	        <p class="card-text">Ajouter, rechercher, modifier, supprimer, consulter les informations sur les notes des étudiants.</p>
-	        <a href="notes" class="btn btn-warning">Commencer</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-    
 	</body>
 </html>
