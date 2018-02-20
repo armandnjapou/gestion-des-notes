@@ -10,5 +10,6 @@ public interface EtudiantDao {
 	void updateEtudiant(Etudiant etudiant);
 	List<Etudiant> getAllEtudiants();
 	Etudiant getEtudiantByNom(String nom);
+	Etudiant getEtudiantById(int ID);
 	void removeEtudiant(int id_etudiant);
 }

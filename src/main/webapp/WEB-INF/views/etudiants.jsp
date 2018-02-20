@@ -10,18 +10,23 @@
 </head>
 <c:import url="/resources/header.jsp"></c:import>
 <body>
-	<br><br><br><br><br>
-	<div class="container">
+	<div class="container" style="padding-top: 10% !important;">
 		<div class="row justify-content-md-center">
+			<c:choose>
+				<c:when test='${msg == "OK"}'>
+					<div id="ok" class="alert alert-success" role="alert">
+					  Modification de ${E.nom} effectue 
+					</div>
+				</c:when>
+			</c:choose>
 			<div class="col-lg-12">
 				<div aria-label="breadcrumb">
 				  <ol class="breadcrumb">
 				    <li class="breadcrumb-item"><a href="dashboard">Tableau de bord</a></li>
-    				<li class="breadcrumb-item active" aria-current="page">Etudiants</li>
+    				<li class="breadcrumb-item active" aria-current="page">Liste des étudiants</li>
 				  </ol>
 				</div>
 			</div>
-
 			<p><button id="a" class="btn btn-success mb-sm-2 mr-sm-2" data-toggle="collapse" data-target="#nouveau" aria-expanded="true" aria-controls="nouveau"><span class="oi oi-plus" title="Modifier" aria-hidden="true"></span></button></p>
 			<p><button id="b" class="btn btn-danger mb-sm-2 mr-sm-2" data-toggle="collapse" data-target="#nouveau" aria-expanded="true" aria-controls="nouveau"><span class="oi oi-circle-x" title="Modifier" aria-hidden="true"></span></button></p>
 			<div class="collapse" id="nouveau">
@@ -71,8 +76,8 @@
 				      <td>${e.genre }</td>
 				      <td>${e.adresse }</td>
 				      <td>
-				      <a href="#" class="btn edit" data-toggle="modal" data-target="#modal"><span class="oi oi-pencil mr-sm-2" title="Modifier" aria-hidden="true"></a>
-				      <a href="#" class="btn remove" data-toggle="modal" data-target="#modal"><span class="oi oi-trash mr-sm-2" title="Supprimer" aria-hidden="true"></a>
+				      <a href="etudiants/${e.id_etudiant }" class="btn edit"><span class="oi oi-pencil mr-sm-2" title="Modifier" aria-hidden="true"></a>
+				      <a href="${e.id_etudiant}|${e.nom }" class="btn remove" data-toggle="modal" data-target="#modal"><span class="oi oi-trash mr-sm-2" title="Supprimer" aria-hidden="true"></a>
 				      </td>
 				    </tr>
 			     </c:forEach>
@@ -84,17 +89,16 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="modalLabel">Modal title</h5>
+	        <h5 class="modal-title" id="modalLabel"></h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
-	      <div class="modal-body">
-	        ...
+	      <div class="modal-body" id="modalBody">
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary">Save changes</button>
+	        <button type="button" class="btn btn-primary">Oui</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
 	      </div>
 	    </div>
 	  </div>
@@ -110,6 +114,18 @@
 				$('#a').show();
 				$(this).hide();
 			});
+			
+			
+			$('.remove').each(function(){
+				$(this).click(function(){
+					var texte = $(this).attr('href');
+					var tab = texte.split('|');
+					$('#modalLabel').text("Suppression de "+ tab[1]);
+					$('#modalBody').text("Voulez vraiment supprimer cet étudiant ?");
+				});
+			});
+			
+			$('#ok').fadeOut(2000);
 		});
 	</script>
 </body>

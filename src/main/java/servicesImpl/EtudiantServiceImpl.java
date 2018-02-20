@@ -48,4 +48,10 @@ public class EtudiantServiceImpl implements EtudiantService {
 		this.etudiantDao.removeEtudiant(id_etudiant);
 	}
 
+	@Override
+	public Etudiant getEtudiantById(int ID) {
+		// TODO Auto-generated method stub
+		return this.etudiantDao.getEtudiantById(ID);
+	}
+
 }
