@@ -10,7 +10,10 @@
 		<div class="container">
 			<div class="row justify-content-md-center" style="padding-top: 10% !important;">
 		  		<div class="col-lg-6 col-lg-auto bg-dark text-white rounded">
-		    		<center><h2 class="center">Connectez vous</h2></center>
+		    		<center>
+		    			<!-- <img alt="logo" class="img-fluid" src="<c:url value="/resources/images/logo GN.png" />"> -->
+		    			<h2 class="center">Connectez vous</h2>
+		    		</center>
 		    		<c:choose>
 						<c:when test='${msg == "Error"}'>
 							<div class="alert alert-danger" role="alert">

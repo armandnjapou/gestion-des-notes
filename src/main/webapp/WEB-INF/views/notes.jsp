@@ -8,6 +8,7 @@
 		<title>Gestion des notes</title>
 	</head>
 	<c:import url="/resources/header.jsp"></c:import>
+	<body>
 	<br><br><br><br><br>
 	<div class="container">
 		<div class="row justify-content-md-center">

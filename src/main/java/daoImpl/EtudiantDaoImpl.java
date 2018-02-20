@@ -47,7 +47,7 @@ public class EtudiantDaoImpl implements EtudiantDao {
 	@Transactional
 	public List<Etudiant> getAllEtudiants() {
 		// TODO Auto-generated method stub
-		List<Etudiant> AllEtudiants = (List<Etudiant>) this.current_session().createQuery("select etudiant FROM Etudiant etudiant").list();
+		List<Etudiant> AllEtudiants = (List<Etudiant>) this.current_session().createQuery("select etudiant FROM Etudiant etudiant ORDER BY etudiant.nom").list();
 		return AllEtudiants;
 	}
 

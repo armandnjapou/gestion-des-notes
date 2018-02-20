@@ -23,13 +23,13 @@ public class CoursDaoImpl implements CoursDao {
 	@Override
 	public void addCours(Cours cours) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void updateCours(Cours cours) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -47,7 +47,6 @@ public class CoursDaoImpl implements CoursDao {
 	@Override
 	public void removeCours(String intitule) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 }
