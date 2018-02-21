@@ -2,11 +2,15 @@ package daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.CoursDao;
 import entities.Cours;
 
+@Repository
 public class CoursDaoImpl implements CoursDao {
 
 	private SessionFactory sessionFactory;
@@ -32,10 +36,14 @@ public class CoursDaoImpl implements CoursDao {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<Cours> getAllCours() {
 		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		List<Cours> cours = (List<Cours>) session.createQuery("select cours from Cours cours").list();
+		return cours;
 	}
 
 	@Override

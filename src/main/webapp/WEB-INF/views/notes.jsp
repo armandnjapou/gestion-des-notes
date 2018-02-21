@@ -25,29 +25,24 @@
 			    <tr>
 			      <th scope="col">#</th>
 			      <th scope="col">Noms et Prénoms</th>
-			      <c:forEach items="${cours}" var="c" varStatus="boucle">
-			      	<th scope="col">${c}</th>
+			      <c:forEach items="${listeCours}" var="lc" varStatus="boucle">
+			      	<th scope="col">${lc.intitule}</th>
 			      </c:forEach>
 			      <th scope="col">Actions</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr>
-			      <th scope="row">1</th>
-			      <td>Mark</td>
-			      <c:forEach items="${cours}" var="c" varStatus="boucle">
-			      	<td scope="col">${c}</td>
+			  	<c:forEach items="${liste}" var="l" varStatus="boucle">
+			  	 <tr>
+			      <th scope="row">${boucle.count}</th>
+			      <td>${l.nom}</td>
+			      <c:forEach items="${listeCours}" var="c" varStatus="boucle">
+			      	<td scope="col">/</td>
 			      </c:forEach>
-			      <td>Détails</td>
+			      <td><a href="notes/${l.id_etudiant }" class="btn edit"><span class="oi oi-pencil mr-sm-2" title="Modifier" aria-hidden="true"></a>
+				  </td>
 			    </tr>
-			    <tr>
-			      <th scope="row">1</th>
-			      <td>Mark</td>
-			      <c:forEach items="${cours}" var="c" varStatus="boucle">
-			      	<td scope="col">${c}</td>
-			      </c:forEach>
-			      <td><a href="noteEtudiant?id=">Détails</a></td>
-			    </tr>
+			  	</c:forEach>
 			  </tbody>
 			</table>
 		</div>

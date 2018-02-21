@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import entities.Etudiant;
 import services.EtudiantService;
@@ -68,5 +69,14 @@ public class EtudiantController {
 		model.addAttribute("etudiants", etudiants);
 		model.addAttribute("etudiant", new Etudiant());
 		return "etudiants";
+	}
+	
+	@RequestMapping(value="/supprimerEtudiant/{id}", method=RequestMethod.GET)
+	public @ResponseBody Etudiant supprimer(@PathVariable int id, Model model) {
+		
+		Etudiant E = etudiantService.getEtudiantById(id);
+		System.out.println("Je fais de l'AJAX "+E.getAdresse());
+		//etudiantService.removeEtudiant(id);
+		return E;
 	}
 }

@@ -59,8 +59,14 @@ public class EtudiantDaoImpl implements EtudiantDao {
 	}
 
 	@Override
+	@Transactional
 	public void removeEtudiant(int id_etudiant) {
 		// TODO Auto-generated method stub
+		Etudiant E = (Etudiant) this.current_session()
+				.createQuery("from Etudiant where id_etudiant ="+id_etudiant)
+				.uniqueResult();
+		if(E != null)
+			this.current_session().delete(E);
 
 	}
 

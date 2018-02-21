@@ -11,7 +11,7 @@
 <c:import url="/resources/header.jsp"></c:import>
 <body>
 	<div class="container" style="padding-top: 10% !important;">
-		<div class="row justify-content-md-center">
+		<div class="row">
 			<c:choose>
 				<c:when test='${msg == "OK"}'>
 					<div id="ok" class="alert alert-success" role="alert">
@@ -19,6 +19,7 @@
 					</div>
 				</c:when>
 			</c:choose>
+			<div id="del" class="alert alert-danger" role="alert"></div>
 			<div class="col-lg-12">
 				<div aria-label="breadcrumb">
 				  <ol class="breadcrumb">
@@ -69,7 +70,7 @@
 			  </thead>
 			  <tbody>
 			  	<c:forEach items="${etudiants}" var="e" varStatus="boucle">
-			      	<tr>
+			      	<tr id="etu${e.id_etudiant}">
 				      <td scope="row">${boucle.count}</td>
 				      <td>${e.nom }</td>
 				      <td>${e.date_naissance }</td>
@@ -97,8 +98,8 @@
 	      <div class="modal-body" id="modalBody">
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary">Oui</button>
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+	        <button type="button" id="delete" class="btn btn-primary" data-dismiss="modal">Oui</button>
+	        <button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Non</button>
 	      </div>
 	    </div>
 	  </div>
@@ -106,6 +107,7 @@
 	<script>
 		$(function(){
 			$('#b').hide();
+			$('#del').hide();
 			$('#a').click(function(){
 				$('#b').show();
 				$(this).hide();
@@ -122,6 +124,25 @@
 					var tab = texte.split('|');
 					$('#modalLabel').text("Suppression de "+ tab[1]);
 					$('#modalBody').text("Voulez vraiment supprimer cet étudiant ?");
+					$('#delete').click(function(){
+						var id = tab[0];
+						var adresse = "supprimerEtudiant/"+id;
+						$.ajax({
+							type: 'GET',
+							url : adresse,
+							success: function(data){
+								$('#del').text("L'étudiant "+data.nom+" a été supprimé avec succuès !");
+								$('#del').fadeIn(2000);
+								$('#del').fadeOut(2000);
+								//window.setTimeout(location.reload(true), 5000);
+								location.reload(true);
+								//$('#etu'+data.id_etudiant).hide();
+							},
+							error: function(){
+								alert("Error occured !");
+							}
+						});
+					});
 				});
 			});
 			

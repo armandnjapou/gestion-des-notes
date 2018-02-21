@@ -39,7 +39,7 @@
       <a href="disconnect"><span class="oi oi-power-standby text-white mr-sm-2" title="Déconnexion" aria-hidden="true"></span></a>
     </nav>
     
-    <header class="bg-warning text-white">
+    <header class="bg-primary text-white">
       <div class="container text-center">
         <h1>Bienvenue sur la plateforme de gestion des notes</h1>
         <p class="lead">Cette plateforme assure le suivi de vos évaluations et de vos cours</p>
