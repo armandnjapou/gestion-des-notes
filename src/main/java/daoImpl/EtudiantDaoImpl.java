@@ -1,5 +1,6 @@
 package daoImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -8,7 +9,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.EtudiantDao;
+import entities.Cours;
 import entities.Etudiant;
+import entities.EtudiantNotes;
 
 @Repository
 public class EtudiantDaoImpl implements EtudiantDao {
@@ -79,5 +82,31 @@ public class EtudiantDaoImpl implements EtudiantDao {
 				.uniqueResult();
 		return E;
 	}
+
+	@Override
+	@Transactional
+	public List<EtudiantNotes> getNotes(List<Etudiant> liste, List<Cours> listecours) {
+		// TODO Auto-generated method stub
+		Float[] tab;
+		List<EtudiantNotes> retour = new ArrayList<EtudiantNotes>();
+		Session session = this.current_session();
+		for(Etudiant e: liste){
+			EtudiantNotes etud = new EtudiantNotes();
+			List<String> notes = new ArrayList<String>();
+			for(Cours c : listecours){
+				Object note =  session.createSQLQuery("select note from suivre where id_etudiant = "+e.getId_etudiant()+" and id_cours = "+c.getId_cours())
+						.uniqueResult();
+				if(note == null)
+					note ="/";
+				notes.add(note.toString());
+			}
+		    etud.setEtudiant(e); etud.setNotes(notes);
+		    retour.add(etud);
+		}
+		
+		return retour;
+	}
+
+	
 
 }

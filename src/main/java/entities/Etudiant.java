@@ -44,7 +44,7 @@ public class Etudiant {
         joinColumns = @JoinColumn(name = "id_etudiant"),
         inverseJoinColumns = @JoinColumn(name = "id_cours")
     )
-	private List<Cours> cours = new ArrayList<Cours>();
+	public List<Cours> cours = new ArrayList<Cours>();
 	
 	public Etudiant() {}
 	
