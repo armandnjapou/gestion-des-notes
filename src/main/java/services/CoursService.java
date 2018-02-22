@@ -9,5 +9,7 @@ public interface CoursService {
 	void updateCours(Cours cours);
 	List<Cours> getAllCours();
 	Cours getCoursByIntitule(String initutle);
+	Cours getCoursByID(int id);
 	void removeCours(String intitule);
+	void removeCours(int id);
 }
