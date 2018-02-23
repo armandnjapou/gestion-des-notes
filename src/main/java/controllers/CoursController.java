@@ -90,7 +90,7 @@ public class CoursController {
 	public @ResponseBody Cours supprimer(@PathVariable int id, Model model) {
 		Cours C = coursService.getCoursByID(id);
 		
-		System.out.println("Je fais de l'AJAX "+C.getCoefficient());
+		System.out.println("Je fais de l'AJAX "+C.getId_cours());
 		coursService.removeCours(id);
 		return C;
 	}

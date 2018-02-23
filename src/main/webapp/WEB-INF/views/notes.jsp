@@ -32,14 +32,14 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<c:forEach items="${liste}" var="l" varStatus="boucle">
+			  	<c:forEach items="${liste}" var="en" varStatus="boucle">
 			  	 <tr>
 			      <th scope="row">${boucle.count}</th>
-			      <td>${l.nom}</td>
-			      <c:forEach items="${listeCours}" var="c" varStatus="boucle">
-			      	<td scope="col">/</td>
+			      <td>${en.etudiant.nom}</td>
+			      <c:forEach items="${en.notes}" var="note" varStatus="boucle">
+			      	<td scope="col">${note}</td>
 			      </c:forEach>
-			      <td><a href="notes/${l.id_etudiant }" class="btn edit"><span class="oi oi-pencil mr-sm-2" title="Modifier" aria-hidden="true"></a>
+			      <td><a href="notes/${en.etudiant.id_etudiant}" class="btn edit"><span class="oi oi-pencil mr-sm-2" title="Modifier" aria-hidden="true"></a>
 				  </td>
 			    </tr>
 			  	</c:forEach>

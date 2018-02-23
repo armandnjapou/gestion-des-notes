@@ -3,7 +3,9 @@ package servicesImpl;
 import java.util.List;
 
 import dao.EtudiantDao;
+import entities.Cours;
 import entities.Etudiant;
+import entities.EtudiantNotes;
 import services.EtudiantService;
 
 public class EtudiantServiceImpl implements EtudiantService {
@@ -53,5 +55,15 @@ public class EtudiantServiceImpl implements EtudiantService {
 		// TODO Auto-generated method stub
 		return this.etudiantDao.getEtudiantById(ID);
 	}
+
+	@Override
+	public List<EtudiantNotes> getNotes(List<Etudiant> liste, List<Cours> listecours) {
+		// TODO Auto-generated method stub
+		return this.etudiantDao.getNotes(liste,listecours);
+	}
+
+	
+
+	
 
 }

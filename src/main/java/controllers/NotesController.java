@@ -1,6 +1,5 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import entities.Cours;
 import entities.Etudiant;
+import entities.EtudiantNotes;
 import services.CoursService;
 import services.EtudiantService;
 
@@ -39,10 +39,16 @@ public class NotesController {
 		
 		List<Etudiant> listeEtudiants = etudiantService.getAllEtudiants();
 		List<Cours> listeCours = coursService.getAllCours();
-		
-		model.addAttribute("liste", listeEtudiants);
+		List<EtudiantNotes> listenotesParEtudiant = etudiantService.getNotes(listeEtudiants,listeCours);
+		model.addAttribute("liste", listenotesParEtudiant);
 		model.addAttribute("listeCours", listeCours);
 				
+		return "notes";
+	}
+	
+	@RequestMapping(value="", method = RequestMethod.POST)
+	public String modifiernotes(Model model){
+		
 		return "notes";
 	}
 }
