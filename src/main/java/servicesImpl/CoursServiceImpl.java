@@ -48,4 +48,16 @@ public class CoursServiceImpl implements CoursService {
 		this.coursDao.removeCours(intitule);
 	}
 
+	@Override
+	public Cours getCoursByID(int id) {
+		
+		return  this.coursDao.getCoursByID(id);
+	}
+
+	@Override
+	public void removeCours(int id) {
+		this.coursDao.removeCours(id);
+		
+	}
+
 }
