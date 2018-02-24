@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import dao.CoursDao;
 import entities.Cours;
+import entities.Etudiant;
 
 @Repository
 public class CoursDaoImpl implements CoursDao {
@@ -22,16 +23,28 @@ public class CoursDaoImpl implements CoursDao {
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+		
+	}
+	private Session current_session() {
+		Session session = this.sessionFactory.getCurrentSession();
+		return session;
 	}
 
+
 	@Override
+	@Transactional
 	public void addCours(Cours cours) {
+		this.current_session().persist(cours);
 		// TODO Auto-generated method stub
 		
 	}
 
+	
+
 	@Override
+	@Transactional
 	public void updateCours(Cours cours) {
+		this.current_session().update(cours);
 		// TODO Auto-generated method stub
 		
 	}
@@ -42,19 +55,52 @@ public class CoursDaoImpl implements CoursDao {
 	public List<Cours> getAllCours() {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();
-		List<Cours> cours = (List<Cours>) session.createQuery("select cours from Cours cours").list();
+		List<Cours> cours = (List<Cours>) this.current_session().createQuery("select cours from Cours cours").list();
 		return cours;
 	}
 
 	@Override
-	public Cours getCoursByIntitule(String initutle) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public Cours getCoursByIntitule(String initule) {
+		Cours C = (Cours) this.current_session()
+				.createQuery("from Cours where initule ="+initule )
+				.uniqueResult();
+		return C;
+		
+		
 	}
 
 	@Override
-	public void removeCours(String intitule) {
-		// TODO Auto-generated method stub
+	@Transactional
+	public void removeCours(String initule) {
+		
+		Cours C = (Cours) this.current_session()
+				.createQuery("from Cours where id_cours ="+initule)
+				.uniqueResult();
+		if(C != null)
+			this.current_session().delete(C);
+		
+	}
+
+	@Override
+	@Transactional
+	public Cours getCoursByID(int id) {
+		Cours C = (Cours) this.current_session()
+				.createQuery("from Cours where id_cours ="+id )
+				.uniqueResult();
+		return C;
+		
+		
+	}
+
+	@Override
+	@Transactional
+	public void removeCours(int id) {
+		Cours C = (Cours) this.current_session()
+				.createQuery("from Cours where id_cours ="+id)
+				.uniqueResult();
+		if(C != null)
+			this.current_session().delete(C);
 		
 	}
 }
