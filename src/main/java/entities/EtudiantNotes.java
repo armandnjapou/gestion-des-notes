@@ -6,6 +6,8 @@ public class EtudiantNotes {
 	
 	private Etudiant etudiant;
 	private List<String> notes;
+	private String note;
+	
 	public Etudiant getEtudiant() {
 		return etudiant;
 	}
@@ -18,7 +20,10 @@ public class EtudiantNotes {
 	public void setNotes(List<String> notes) {
 		this.notes = notes;
 	}
-	
-	
-
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
 }

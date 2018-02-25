@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import entities.Cours;
+import entities.Etudiant;
 
 public interface CoursDao {
 	void addCours(Cours cours);

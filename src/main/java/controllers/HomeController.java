@@ -49,7 +49,6 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("user", new Users());
-		System.out.println("Je suis dans le GET ");
 		return "home";
 	}
 	
@@ -83,4 +82,8 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value="/warning", method=RequestMethod.GET)
+	public String warning() {
+		return "warning";
+	}
 }

@@ -3,6 +3,7 @@ package services;
 import java.util.List;
 
 import entities.Cours;
+import entities.Etudiant;
 
 public interface CoursService {
 	void addCours(Cours cours);

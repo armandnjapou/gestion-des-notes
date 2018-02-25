@@ -32,7 +32,7 @@
 						    <form:input required="true" path="password" type="password" name="password" cssClass="form-control" id="password" placeholder="Mot de passe" />
 						  </div>
 						  <a href="forgotPassword" >Mot de passe oublié ?</a><br><br>
-						  <button type="submit" class="btn btn-warning">Submit</button>
+						  <button type="submit" class="btn btn-outline-success">Submit</button>
 		    		</form:form>
 		  		</div>
 		 	</div>

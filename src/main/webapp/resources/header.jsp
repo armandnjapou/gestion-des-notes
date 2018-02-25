@@ -19,24 +19,24 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="etudiants">Etudiants</a>
+              <a class="nav-link js-scroll-trigger" href="/gnote/etudiants">Etudiants</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="cours">Cours</a>
+              <a class="nav-link js-scroll-trigger" href="/gnote/cours">Cours</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="notes">Notes</a>
+              <a class="nav-link js-scroll-trigger" href="/gnote/notes">Notes</a>
             </li>
           </ul>
         </div>
         <div class="ml-sm-4">
 			<form class="form-inline" action="#" method="get">
 			    <input name="q" class="form-control mr-sm-2" type="search" placeholder="Que cherchez vous ?" aria-label="recherche">
-			    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Rechercher</button>
+			    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
 			</form>
         </div>
       </div>
-      <a href="disconnect"><span class="oi oi-power-standby text-white mr-sm-2" title="Déconnexion" aria-hidden="true"></span></a>
+      <a href="/gnote/disconnect"><span class="oi oi-power-standby text-white mr-sm-2" title="Déconnexion" aria-hidden="true"></span></a>
     </nav>
 	</body>
 </html>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import dao.CoursDao;
 import entities.Cours;
+import entities.Etudiant;
 import services.CoursService;
 
 public class CoursServiceImpl implements CoursService {
@@ -59,5 +60,4 @@ public class CoursServiceImpl implements CoursService {
 		this.coursDao.removeCours(id);
 		
 	}
-
 }

@@ -28,14 +28,6 @@ public class CoursController {
 		this.coursService = cs;
 	}
     
-  /*  @RequestMapping(value="/cours", method=RequestMethod.GET)
-	public String cours(Model model) {
-		List<Cours> cours = coursService.getAllCours();
-		model.addAttribute("cours", cours);
-		model.addAttribute("cour", new Cours());
-		return "cours";
-	}*/
-    
 	@RequestMapping(value="/cours", method = RequestMethod.GET)
 	public String notes(Model model) {//model nous permet de passer des variables � la jsp
 		List<Cours> listeCours = coursService.getAllCours();

@@ -3,6 +3,7 @@ package daoImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -87,7 +88,6 @@ public class EtudiantDaoImpl implements EtudiantDao {
 	@Transactional
 	public List<EtudiantNotes> getNotes(List<Etudiant> liste, List<Cours> listecours) {
 		// TODO Auto-generated method stub
-		Float[] tab;
 		List<EtudiantNotes> retour = new ArrayList<EtudiantNotes>();
 		Session session = this.current_session();
 		for(Etudiant e: liste){
@@ -107,6 +107,98 @@ public class EtudiantDaoImpl implements EtudiantDao {
 		return retour;
 	}
 
-	
+	@Override
+	@Transactional
+	public EtudiantNotes getNotes(Etudiant E, List<Cours> L) {
+		// TODO Auto-generated method stub
+		Session session = this.current_session();
+		EtudiantNotes etud = new EtudiantNotes();
+		etud.setEtudiant(E);
+		List<String> notes = new ArrayList<String>();
+		for(Cours c : L){
+			Object note =  session.createSQLQuery("select note from suivre where id_etudiant = "+E.getId_etudiant()+" and id_cours = "+c.getId_cours())
+					.uniqueResult();
+			if(note == null)
+				note ="/";
+			notes.add(note.toString());
+		}
+	     
+	    etud.setNotes(notes);
+	    
+		return etud;
+	}
 
+	@Override
+	@Transactional
+	public void saveNotes(int id_etudiant, List<Cours> cours, List<String> notes) {
+		// TODO Auto-generated method stub
+		Session session = this.current_session();
+		System.out.println(notes.size()+" : "+cours.size());
+		
+		int i=0;
+		for(Cours c : cours) {
+			Query query = null;
+			if(checkNotes(id_etudiant, c.getId_cours())) {
+				query = session.createSQLQuery("UPDATE suivre set note = :note where id_etudiant = :id_etu and id_cours = :id_cours");
+			}else {
+				query = session.createSQLQuery("INSERT INTO suivre(note, id_etudiant, id_cours) VALUES(:note, :id_etu, :id_cours)");
+			}
+			query.setParameter("note", notes.get(i));
+			query.setParameter("id_etu", id_etudiant);
+			query.setParameter("id_cours", c.getId_cours());
+			query.executeUpdate();
+			i++;
+		}
+		
+	}
+
+	@Transactional
+	public boolean checkNotes(int id_etudiant, int id_cours) {
+		Session session = this.current_session();
+		Object o = session.createSQLQuery("select note from suivre where id_etudiant = "+id_etudiant+" and id_cours ="+id_cours)
+				.uniqueResult();
+		if(o == null)
+			return false;
+		else return true;
+	}
+
+	@Override
+	@Transactional
+	public List<EtudiantNotes> getNotes(List<Etudiant> liste, Cours cours) {
+		List<EtudiantNotes> retour = new ArrayList<EtudiantNotes>();
+		Session session = this.current_session();
+		for(Etudiant e: liste){
+			EtudiantNotes etud = new EtudiantNotes();
+			Object note =  session.createSQLQuery("select note from suivre where id_etudiant = "+e.getId_etudiant()+" and id_cours = "+cours.getId_cours())
+						.uniqueResult();
+			if(note == null)
+				note ="/";
+			etud.setNote(note.toString());
+		    etud.setEtudiant(e);
+		    retour.add(etud);
+		}
+		
+		return retour;
+	}
+
+	@Override
+	@Transactional
+	public void saveNotes(List<Etudiant> etudiants, List<String> notes, int id_cours) {
+		// TODO Auto-generated method stub
+		Session session = this.current_session();
+		int i=0;
+		for(Etudiant E : etudiants) {
+			Query query = null;
+			if(checkNotes(E.getId_etudiant(), id_cours)) {
+				query = session.createSQLQuery("UPDATE suivre set note = :note where id_etudiant = :id_etu and id_cours = :id_cours");
+			}else {
+				query = session.createSQLQuery("INSERT INTO suivre(note, id_etudiant, id_cours) VALUES(:note, :id_etu, :id_cours)");
+			}
+			query.setParameter("note", notes.get(i));
+			query.setParameter("id_etu", E.getId_etudiant());
+			query.setParameter("id_cours", id_cours);
+			query.executeUpdate();
+			i++;
+		}
+	}
 }
