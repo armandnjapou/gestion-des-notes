@@ -20,7 +20,7 @@
 				<div class="col-lg-12">
 					<div aria-label="breadcrumb">
 					  <ol class="breadcrumb">
-					    <li class="breadcrumb-item"><a href="dashboard">Tableau de bord</a></li>
+					    <li class="breadcrumb-item"><a href="/gnote/dashboard">Tableau de bord</a></li>
 	    				<li class="breadcrumb-item active" aria-current="page">Gestion des notes</li>
 					  </ol>
 					</div>

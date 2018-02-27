@@ -18,7 +18,7 @@
 	<!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Gestion des notes</a>
+        <a class="navbar-brand js-scroll-trigger" href="/gnote/dashboard">Gestion des notes</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,7 +36,7 @@
           </ul>
         </div>
         <div class="ml-sm-4">
-			<form class="form-inline" action="search" method="get">
+			<form class="form-inline" action="/gnote/search" method="get">
 			    <input name="q" class="form-control mr-sm-2" type="search" placeholder="Que cherchez vous ?" aria-label="recherche">
 			    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
 			</form>

@@ -13,4 +13,5 @@ public interface CoursService {
 	Cours getCoursByID(int id);
 	void removeCours(String intitule);
 	void removeCours(int id);
+	List<Cours> getCoursByKey(String key);
 }

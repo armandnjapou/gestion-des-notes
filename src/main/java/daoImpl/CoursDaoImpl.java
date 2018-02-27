@@ -104,4 +104,15 @@ public class CoursDaoImpl implements CoursDao {
 			this.current_session().delete(C);
 		
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Cours> getCoursByKey(String key) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		List<Cours> cours = (List<Cours>) session.createSQLQuery("select * from cours where intitule like '%"+key+"%'").list();
+		
+		return cours;
+	}
 }

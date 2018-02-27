@@ -60,4 +60,10 @@ public class CoursServiceImpl implements CoursService {
 		this.coursDao.removeCours(id);
 		
 	}
+
+	@Override
+	public List<Cours> getCoursByKey(String key) {
+		// TODO Auto-generated method stub
+		return this.coursDao.getCoursByKey(key);
+	}
 }

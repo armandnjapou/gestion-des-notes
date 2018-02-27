@@ -19,4 +19,5 @@ public interface EtudiantDao {
 	void saveNotes(int id_etudiant, List<Cours> cours, List<String> notes);
 	List<EtudiantNotes> getNotes(List<Etudiant> liste, Cours cours);
 	void saveNotes(List<Etudiant> etudiants, List<String> notes, int id_cours);
+	List<Etudiant> getEtudiantByKey(String key);
 }

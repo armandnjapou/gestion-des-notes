@@ -30,8 +30,8 @@
           </ul>
         </div>
         <div class="ml-sm-4">
-			<form class="form-inline" action="#" method="get">
-			    <input name="q" class="form-control mr-sm-2" type="search" placeholder="Que cherchez vous ?" aria-label="recherche">
+			<form class="form-inline" action="/gnote/search" method="get">
+			    <input name="q" id="q" class="form-control mr-sm-2" type="search" placeholder="Que cherchez vous ?" aria-label="recherche">
 			    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
 			</form>
         </div>

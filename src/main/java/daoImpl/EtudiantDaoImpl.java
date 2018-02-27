@@ -201,4 +201,13 @@ public class EtudiantDaoImpl implements EtudiantDao {
 			i++;
 		}
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Etudiant> getEtudiantByKey(String key) {
+		// TODO Auto-generated method stub
+		List<Etudiant> AllEtudiants = (List<Etudiant>) this.current_session().createQuery("select etudiant FROM Etudiant etudiant where etudiant.nom like '%"+key+"%' or etudiant.adresse like '%"+key+"%'").list();
+		return AllEtudiants;
+	}
 }

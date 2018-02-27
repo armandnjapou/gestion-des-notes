@@ -85,4 +85,10 @@ public class EtudiantServiceImpl implements EtudiantService {
 		// TODO Auto-generated method stub
 		this.etudiantDao.saveNotes(etudiants, notes, id_cours);
 	}
+
+	@Override
+	public List<Etudiant> getEtudiantByKey(String key) {
+		// TODO Auto-generated method stub
+		return this.etudiantDao.getEtudiantByKey(key);
+	}
 }

@@ -28,7 +28,7 @@
 					<div class="col-lg-12">
 						<div aria-label="breadcrumb">
 						  <ol class="breadcrumb">
-						    <li class="breadcrumb-item"><a href="dashboard">Tableau de bord</a></li>
+						    <li class="breadcrumb-item"><a href="/gnote/dashboard">Tableau de bord</a></li>
 		    				<li class="breadcrumb-item active" aria-current="page">Liste des étudiants</li>
 						  </ol>
 						</div>
@@ -122,6 +122,20 @@
 						$(this).hide();
 					});
 					
+					/*$('#q').autocomplete({
+						source : function(){
+							$.ajax({
+								type : 'GET',
+								url : "searchEtudiant?q="+$(this).val,
+								success : function(data){
+									alert(data);
+								},
+								error: function(){
+									alert("Error occured !");
+								}
+							});
+						}
+					});*/
 					
 					$('.remove').each(function(){
 						$(this).click(function(){

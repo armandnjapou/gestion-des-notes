@@ -18,12 +18,16 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import entities.Cours;
 import entities.Etudiant;
 import entities.Users;
+import services.CoursService;
 import services.EtudiantService;
 import services.UserService;
 
@@ -44,6 +48,22 @@ public class HomeController {
 	@Qualifier(value="userService")
 	public void setUserService(UserService us) {
 		this.userService = us;
+	}
+	
+	private CoursService coursService;
+
+    @Autowired
+    @Qualifier(value="coursService")
+	public void setCoursService(CoursService cs) {
+		this.coursService = cs;
+	}
+    
+    private EtudiantService etudiantService;
+	
+	@Autowired(required=true)
+	@Qualifier(value="etudiantService")
+	public void setEtudiantService(EtudiantService es) {
+		this.etudiantService = es;
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -85,5 +105,16 @@ public class HomeController {
 	@RequestMapping(value="/warning", method=RequestMethod.GET)
 	public String warning() {
 		return "warning";
+	}
+	
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+	public String search(@RequestParam("q") String key, Model model) {
+		List<Cours> cours = coursService.getCoursByKey(key);
+		List<Etudiant> etudiants = etudiantService.getEtudiantByKey(key);
+		
+		model.addAttribute("key", key);
+		model.addAttribute("cours", cours);
+		model.addAttribute("etudiants", etudiants);
+		return "search";
 	}
 }
