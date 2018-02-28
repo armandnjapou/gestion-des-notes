@@ -79,12 +79,12 @@ public class CoursController {
 }
 	
 	@RequestMapping(value="/supprimerCours/{id}", method=RequestMethod.GET)
-	public @ResponseBody Cours supprimer(@PathVariable int id, Model model) {
+	public @ResponseBody String supprimer(@PathVariable int id, Model model) {
 		Cours C = coursService.getCoursByID(id);
 		
-		System.out.println("Je fais de l'AJAX "+C.getId_cours());
+		System.out.println("Je fais de l'AJAX "+C.getIntitule());
 		coursService.removeCours(id);
-		return C;
+		return C.getIntitule();
 	}
 	
 }

@@ -122,21 +122,6 @@
 						$(this).hide();
 					});
 					
-					/*$('#q').autocomplete({
-						source : function(){
-							$.ajax({
-								type : 'GET',
-								url : "searchEtudiant?q="+$(this).val,
-								success : function(data){
-									alert(data);
-								},
-								error: function(){
-									alert("Error occured !");
-								}
-							});
-						}
-					});*/
-					
 					$('.remove').each(function(){
 						$(this).click(function(){
 							var texte = $(this).attr('href');
@@ -145,7 +130,7 @@
 							$('#modalBody').text("Voulez vraiment supprimer cet étudiant ?");
 							$('#delete').click(function(){
 								var id = tab[0];
-								var adresse = "supprimerEtudiant/"+id;
+								var adresse = "/gnote/supprimerEtudiant/"+id;
 								$.ajax({
 									type: 'GET',
 									url : adresse,

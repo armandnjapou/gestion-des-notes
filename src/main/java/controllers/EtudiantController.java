@@ -76,7 +76,7 @@ public class EtudiantController {
 		
 		Etudiant E = etudiantService.getEtudiantById(id);
 		System.out.println("Je fais de l'AJAX "+E.getAdresse());
-		//etudiantService.removeEtudiant(id);
+		etudiantService.removeEtudiant(id);
 		return E;
 	}
 }

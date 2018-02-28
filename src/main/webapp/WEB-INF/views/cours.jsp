@@ -123,12 +123,12 @@
 						$('#modalBody').text("Voulez vraiment supprimer ce Cours ?");
 						$('#delete').click(function(){
 							var id = tab[0];
-							var adresse = "supprimerCours/"+id;
+							var adresse = "/gnote/supprimerCours/"+id;
 							$.ajax({
 								type: 'GET',
 								url : adresse,
 								success: function(data){
-									$('#del').text("Le cours "+data.intitule+" a été supprimé avec succuès !");
+									$('#del').text("Le cours "+data+" a été supprimé avec succès !");
 									$('#del').fadeIn(2000);
 									$('#del').fadeOut(2000);
 									//window.setTimeout(location.reload(true), 5000);
